@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:latest
+  
+  backend:
+    build:
+      context: ..
+      dockerfile: HotelAPI/Dockerfile
+    depends_on:
+      - postgres
