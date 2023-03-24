@@ -10,16 +10,15 @@ namespace HotelConsole.Controllers;
 
 public class HotelConsoleController
 {
-    private const string ApiUrl = "https://localhost:4433/";
     private readonly HotelApiController _hotelApiController;
 
     private View? _view;
 
-    public HotelConsoleController()
+    public HotelConsoleController(string apiUrl)
     {
         Utility.WriteFiglet();
 
-        _hotelApiController = new HotelApiController(ApiUrl, Utility.CreateHttpClient());
+        _hotelApiController = new HotelApiController(apiUrl, Utility.CreateHttpClient());
 
         OpenView(new MainMenu());
     }
@@ -32,7 +31,7 @@ public class HotelConsoleController
         {
             AnsiConsole.Clear();
             Utility.WriteFiglet();
-            
+
             switch (_view.ViewType)
             {
                 case ViewType.Menu:
@@ -57,8 +56,9 @@ public class HotelConsoleController
             if (_view.Next == null)
             {
                 OpenView(new MainMenu());
-                if(_view.Next == null) break;
+                if (_view.Next == null) break;
             }
+
             _view = _view.Next;
         }
     }
@@ -154,7 +154,8 @@ public class HotelConsoleController
                 break;
             case UpdaterType.Reservation:
                 var reservationUpdater = new ReservationUpdater(_hotelApiController.ReservationsAllAsync().Result);
-                _hotelApiController.ReservationsPutAsync(reservationUpdater.Reservation.Id, reservationUpdater.Reservation);
+                _hotelApiController.ReservationsPutAsync(reservationUpdater.Reservation.Id,
+                    reservationUpdater.Reservation);
                 _view = reservationUpdater;
                 break;
             case UpdaterType.Room:

@@ -13,5 +13,5 @@ public enum ViewType
     Creator,
     Reader,
     Updater,
-    Deleter,
+    Deleter
 }

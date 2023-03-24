@@ -1,6 +1,3 @@
-using HotelConsole.Views.Menus;
-using Spectre.Console;
-
 namespace HotelConsole.Views.Updaters;
 
 public class Updater : View

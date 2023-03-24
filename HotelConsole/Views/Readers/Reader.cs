@@ -3,7 +3,7 @@ namespace HotelConsole.Views.Readers;
 public class Reader : View
 {
     public ReaderType ReaderType;
-    
+
     protected Reader()
     {
         ViewType = ViewType.Reader;

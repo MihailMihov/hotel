@@ -11,6 +11,7 @@ public class RoomKindUpdater : Updater
     {
         UpdaterType = UpdaterType.RoomKind;
     }
+
     public RoomKindUpdater(ICollection<RoomKind> roomKinds) : this()
     {
         var targetRoomKindName = AnsiConsole.Prompt(
@@ -21,20 +22,21 @@ public class RoomKindUpdater : Updater
                 .AddChoices(roomKinds.Select(b => b.Name)));
 
         RoomKind = roomKinds.First(b => b.Name == targetRoomKindName);
-        
+
         while (true)
         {
             var targetField = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("What would you like to update?")
                     .AddChoices("Name", "Back to Room Kinds Menu"));
-            
-            if(targetField == "Back to Room Kinds Menu") break;
+
+            if (targetField == "Back to Room Kinds Menu") break;
 
             switch (targetField)
             {
                 case "Name":
-                    RoomKind.Name = AnsiConsole.Ask<string>($"Enter [yellow]{RoomKind.Name}'s[/] new [darkorange]name[/]:");
+                    RoomKind.Name =
+                        AnsiConsole.Ask<string>($"Enter [yellow]{RoomKind.Name}'s[/] new [darkorange]name[/]:");
                     break;
             }
         }

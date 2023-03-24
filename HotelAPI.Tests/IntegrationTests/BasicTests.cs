@@ -1,10 +1,9 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
 
 namespace HotelAPI.Tests.IntegrationTests;
 
-public class BasicTests 
+public class BasicTests
     : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
@@ -31,7 +30,7 @@ public class BasicTests
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
         Assert.NotNull(response.Content.Headers.ContentType);
-        Assert.Equal("text/html; charset=utf-8", 
+        Assert.Equal("text/html; charset=utf-8",
             response.Content.Headers.ContentType.ToString());
     }
 }

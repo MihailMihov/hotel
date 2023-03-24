@@ -1,5 +1,4 @@
 using HotelConsole.Models;
-using HotelConsole.Views.Menus;
 using Spectre.Console;
 
 namespace HotelConsole.Views.Readers;
@@ -10,6 +9,7 @@ public class BuildingReader : Reader
     {
         ReaderType = ReaderType.Building;
     }
+
     public BuildingReader(IEnumerable<Building> buildings) : this()
     {
         var table = new Table();
@@ -20,9 +20,8 @@ public class BuildingReader : Reader
         table.AddColumn("Floors");
         table.AddColumn("Room Count");
         foreach (var building in buildings)
-        {
-            table.AddRow(building.Id.ToString(), building.Name, building.Floors.ToString(), building.Rooms.Count.ToString());
-        }
+            table.AddRow(building.Id.ToString(), building.Name, building.Floors.ToString(),
+                building.Rooms.Count.ToString());
         AnsiConsole.Write(table);
         AnsiConsole.Write(new Rule("[yellow]Press any key to go back[/]"));
         Console.Read();

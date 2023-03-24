@@ -9,7 +9,8 @@ public class MainMenu : Menu
         var menu = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
                 .Title("[yellow]Main menu[/]")
-                .AddChoices("Buildings", "Rooms", "Room Kinds", "Parkings", "Vehicles", "Reservations", "Clients", "Exit"));
+                .AddChoices("Buildings", "Rooms", "Room Kinds", "Parkings", "Vehicles", "Reservations", "Clients",
+                    "Exit"));
 
         Select(menu);
     }

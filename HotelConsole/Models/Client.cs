@@ -16,7 +16,7 @@ public class Client
     [JsonProperty("roomId", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
     public int RoomId { get; set; }
 
-    [JsonProperty("room", Required = Required.DisallowNull, NullValueHandling = NullValueHandling.Ignore)]
+    [JsonProperty("room", Required = Required.AllowNull, NullValueHandling = NullValueHandling.Ignore)]
     public Room Room { get; set; }
 
     [JsonProperty("vehicles", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]

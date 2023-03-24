@@ -1,10 +1,10 @@
 using System.Data.Common;
+using HotelAPI.Data.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using HotelAPI.Data.Context;
 
 namespace HotelAPI.Tests;
 
@@ -17,13 +17,13 @@ public class CustomWebApplicationFactory<TProgram>
         {
             var dbContextDescriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
-                    typeof(DbContextOptions<HotelContext>));
+                     typeof(DbContextOptions<HotelContext>));
 
             services.Remove(dbContextDescriptor);
 
             var dbConnectionDescriptor = services.SingleOrDefault(
                 d => d.ServiceType ==
-                    typeof(DbConnection));
+                     typeof(DbConnection));
 
             services.Remove(dbConnectionDescriptor);
 

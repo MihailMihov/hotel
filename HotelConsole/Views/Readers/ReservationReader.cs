@@ -9,6 +9,7 @@ public class ReservationReader : Reader
     {
         ReaderType = ReaderType.Reservation;
     }
+
     public ReservationReader(IEnumerable<Reservation> reservations) : this()
     {
         var table = new Table();
@@ -20,9 +21,8 @@ public class ReservationReader : Reader
         table.AddColumn("End Date");
         table.AddColumn("Late checkout");
         foreach (var reservation in reservations)
-        {
-            table.AddRow(reservation.Id.ToString(), reservation.ClientEmail, reservation.StartDate, reservation.EndDate, reservation.LateCheckout.ToString());
-        }
+            table.AddRow(reservation.Id.ToString(), reservation.ClientEmail, reservation.StartDate, reservation.EndDate,
+                reservation.LateCheckout.ToString());
         AnsiConsole.Write(table);
         AnsiConsole.Write(new Rule("[yellow]Press any key to go back[/]"));
         Console.Read();

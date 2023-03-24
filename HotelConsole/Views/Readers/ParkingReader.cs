@@ -9,6 +9,7 @@ public class ParkingReader : Reader
     {
         ReaderType = ReaderType.Parking;
     }
+
     public ParkingReader(IEnumerable<Parking> parkings) : this()
     {
         var table = new Table();
@@ -19,9 +20,8 @@ public class ParkingReader : Reader
         table.AddColumn("Capacity");
         table.AddColumn("Vehicle Count");
         foreach (var parking in parkings)
-        {
-            table.AddRow(parking.Id.ToString(), parking.Name, parking.Capacity.ToString(), parking.Vehicles.Count.ToString());
-        }
+            table.AddRow(parking.Id.ToString(), parking.Name, parking.Capacity.ToString(),
+                parking.Vehicles.Count.ToString());
         AnsiConsole.Write(table);
         AnsiConsole.Write(new Rule("[yellow]Press any key to go back[/]"));
         Console.Read();

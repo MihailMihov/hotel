@@ -6,10 +6,12 @@ namespace HotelConsole.Views.Deleters;
 public class RoomKindDeleter : Deleter
 {
     public List<int> RoomKindIds = new();
+
     public RoomKindDeleter()
     {
         DeleterType = DeleterType.RoomKind;
     }
+
     public RoomKindDeleter(ICollection<RoomKind> roomKinds) : this()
     {
         var targetRoomKindNames = AnsiConsole.Prompt(
@@ -20,13 +22,9 @@ public class RoomKindDeleter : Deleter
                 .AddChoices(roomKinds.Select(b => b.Name)));
 
         if (!AnsiConsole.Confirm($"Are you sure that you want to delete {targetRoomKindNames.Count} room kinds?"))
-        {
             return;
-        }
-        
+
         foreach (var roomKindName in targetRoomKindNames)
-        {
             RoomKindIds.Add(roomKinds.First(b => b.Name == roomKindName).Id);
-        }
     }
 }

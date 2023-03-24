@@ -1,3 +1,5 @@
 ﻿using HotelConsole.Controllers;
 
-_ = new HotelConsoleController();
+const string apiUrl = "https://localhost:4433/";
+
+_ = new HotelConsoleController(apiUrl);

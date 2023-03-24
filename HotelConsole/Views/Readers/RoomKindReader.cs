@@ -9,6 +9,7 @@ public class RoomKindReader : Reader
     {
         ReaderType = ReaderType.RoomKind;
     }
+
     public RoomKindReader(IEnumerable<RoomKind> roomKinds) : this()
     {
         var table = new Table();
@@ -16,10 +17,7 @@ public class RoomKindReader : Reader
         table.Expand();
         table.AddColumn("ID");
         table.AddColumn("Name");
-        foreach (var roomKind in roomKinds)
-        {
-            table.AddRow(roomKind.Id.ToString(), roomKind.Name);
-        }
+        foreach (var roomKind in roomKinds) table.AddRow(roomKind.Id.ToString(), roomKind.Name);
         AnsiConsole.Write(table);
         AnsiConsole.Write(new Rule("[yellow]Press any key to go back[/]"));
         Console.Read();

@@ -11,6 +11,7 @@ public class ReservationUpdater : Updater
     {
         UpdaterType = UpdaterType.Reservation;
     }
+
     public ReservationUpdater(ICollection<Reservation> reservations) : this()
     {
         var targetReservationClientEmail = AnsiConsole.Prompt(
@@ -21,32 +22,37 @@ public class ReservationUpdater : Updater
                 .AddChoices(reservations.Select(b => b.ClientEmail)));
 
         Reservation = reservations.First(b => b.ClientEmail == targetReservationClientEmail);
-        
+
         while (true)
         {
             var targetField = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("What would you like to update?")
-                    .AddChoices("Client Email", "Start Date", "End Date", "Room ID", "Late Checkout", "Back to Reservations Menu"));
-            
-            if(targetField == "Back to Reservations Menu") break;
+                    .AddChoices("Client Email", "Start Date", "End Date", "Room ID", "Late Checkout",
+                        "Back to Reservations Menu"));
+
+            if (targetField == "Back to Reservations Menu") break;
 
             switch (targetField)
             {
                 case "Client Email":
-                    Reservation.ClientEmail = AnsiConsole.Ask<string>($"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]client email[/]:");
+                    Reservation.ClientEmail = AnsiConsole.Ask<string>(
+                        $"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]client email[/]:");
                     break;
                 case "Start Date":
                     Reservation.StartDate =
-                        AnsiConsole.Ask<string>($"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]start date[/]:");
+                        AnsiConsole.Ask<string>(
+                            $"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]start date[/]:");
                     break;
                 case "End Date":
                     Reservation.EndDate =
-                        AnsiConsole.Ask<string>($"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]end date[/]:");
+                        AnsiConsole.Ask<string>(
+                            $"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]end date[/]:");
                     break;
                 case "Room ID":
                     Reservation.RoomId =
-                        AnsiConsole.Ask<int>($"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]room id[/]:");
+                        AnsiConsole.Ask<int>(
+                            $"Enter [yellow]{Reservation.ClientEmail}'s reservation's[/] new [darkorange]room id[/]:");
                     break;
                 case "Late checkout":
                     Reservation.LateCheckout =

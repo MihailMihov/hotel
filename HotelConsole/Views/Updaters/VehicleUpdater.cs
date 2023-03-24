@@ -11,6 +11,7 @@ public class VehicleUpdater : Updater
     {
         UpdaterType = UpdaterType.Vehicle;
     }
+
     public VehicleUpdater(ICollection<Vehicle> vehicles) : this()
     {
         var targetVehicleRegistration = AnsiConsole.Prompt(
@@ -21,29 +22,32 @@ public class VehicleUpdater : Updater
                 .AddChoices(vehicles.Select(b => b.Registration)));
 
         Vehicle = vehicles.First(b => b.Registration == targetVehicleRegistration);
-        
+
         while (true)
         {
             var targetField = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("What would you like to update?")
                     .AddChoices("Registration", "Client ID", "Parking ID", "Back to Vehicles Menu"));
-            
-            if(targetField == "Back to Vehicles Menu") break;
+
+            if (targetField == "Back to Vehicles Menu") break;
 
             switch (targetField)
             {
                 case "Name":
-                    Vehicle.Registration = 
-                        AnsiConsole.Ask<string>($"Enter [yellow]{Vehicle.Registration}'s[/] new [darkorange]registration[/]:");
+                    Vehicle.Registration =
+                        AnsiConsole.Ask<string>(
+                            $"Enter [yellow]{Vehicle.Registration}'s[/] new [darkorange]registration[/]:");
                     break;
                 case "Client ID":
                     Vehicle.ClientId =
-                        AnsiConsole.Ask<int>($"Enter [yellow]{Vehicle.Registration}'s[/] new [darkorange]client id[/]:");
+                        AnsiConsole.Ask<int>(
+                            $"Enter [yellow]{Vehicle.Registration}'s[/] new [darkorange]client id[/]:");
                     break;
                 case "Parking ID":
                     Vehicle.ParkingId =
-                        AnsiConsole.Ask<int>($"Enter [yellow]{Vehicle.Registration}'s[/] new [darkorange]parking id[/]:");
+                        AnsiConsole.Ask<int>(
+                            $"Enter [yellow]{Vehicle.Registration}'s[/] new [darkorange]parking id[/]:");
                     break;
             }
         }

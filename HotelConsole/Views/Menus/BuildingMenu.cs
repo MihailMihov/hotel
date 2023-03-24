@@ -11,10 +11,10 @@ public class BuildingMenu : Menu
     public BuildingMenu()
     {
         var menu = AnsiConsole.Prompt(
-                new SelectionPrompt<string>()
-                    .Title("[yellow]Building menu[/]")
-                    .AddChoices("Add a building", "Edit a building", "Remove a building", "List all buildings",
-                        "Back to main menu"));
+            new SelectionPrompt<string>()
+                .Title("[yellow]Building menu[/]")
+                .AddChoices("Add a building", "Edit a building", "Remove a building", "List all buildings",
+                    "Back to main menu"));
 
         Select(menu);
     }

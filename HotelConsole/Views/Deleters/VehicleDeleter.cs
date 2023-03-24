@@ -6,10 +6,12 @@ namespace HotelConsole.Views.Deleters;
 public class VehicleDeleter : Deleter
 {
     public List<string> VehicleRegistations = new();
+
     public VehicleDeleter()
     {
         DeleterType = DeleterType.Vehicle;
     }
+
     public VehicleDeleter(ICollection<Vehicle> vehicles) : this()
     {
         var targetVehicleRegistrations = AnsiConsole.Prompt(
@@ -20,8 +22,6 @@ public class VehicleDeleter : Deleter
                 .AddChoices(vehicles.Select(b => b.Registration)));
 
         if (AnsiConsole.Confirm($"Are you sure that you want to delete {targetVehicleRegistrations.Count} vehicles?"))
-        {
             VehicleRegistations = targetVehicleRegistrations;
-        }
     }
 }

@@ -6,10 +6,12 @@ namespace HotelConsole.Views.Deleters;
 public class ClientDeleter : Deleter
 {
     public List<int> ClientIds = new();
+
     public ClientDeleter()
     {
         DeleterType = DeleterType.Client;
     }
+
     public ClientDeleter(ICollection<Client> clients) : this()
     {
         var targetClientNames = AnsiConsole.Prompt(
@@ -19,14 +21,8 @@ public class ClientDeleter : Deleter
                 .MoreChoicesText("[grey](Move up and down to reveal the other clients)[/]")
                 .AddChoices(clients.Select(b => b.Name)));
 
-        if (!AnsiConsole.Confirm($"Are you sure that you want to delete {targetClientNames.Count} clients?"))
-        {
-            return;
-        }
-        
-        foreach (var clientName in targetClientNames)
-        {
-            ClientIds.Add(clients.First(b => b.Name == clientName).Id);
-        }
+        if (!AnsiConsole.Confirm($"Are you sure that you want to delete {targetClientNames.Count} clients?")) return;
+
+        foreach (var clientName in targetClientNames) ClientIds.Add(clients.First(b => b.Name == clientName).Id);
     }
 }

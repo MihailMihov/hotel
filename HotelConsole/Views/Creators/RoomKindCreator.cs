@@ -6,7 +6,7 @@ namespace HotelConsole.Views.Creators;
 public class RoomKindCreator : Creator
 {
     public RoomKind RoomKind;
-    
+
     public RoomKindCreator()
     {
         CreatorType = CreatorType.RoomKind;

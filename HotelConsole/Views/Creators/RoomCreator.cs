@@ -6,7 +6,7 @@ namespace HotelConsole.Views.Creators;
 public class RoomCreator : Creator
 {
     public Room Room;
-    
+
     public RoomCreator()
     {
         CreatorType = CreatorType.Room;
@@ -14,7 +14,7 @@ public class RoomCreator : Creator
         {
             BuildingId = AnsiConsole.Ask<int>("Enter the [yellow]room's[/] [darkorange]building id[/]:"),
             Floor = AnsiConsole.Ask<int>("Enter the [yellow]room's[/] [darkorange]floor[/]:"),
-            KindId = AnsiConsole.Ask<int>("Enter the [yellow]room's[/] [darkorange]kind id[/]:"),
+            KindId = AnsiConsole.Ask<int>("Enter the [yellow]room's[/] [darkorange]kind id[/]:")
         };
     }
 }

@@ -11,6 +11,7 @@ public class ClientUpdater : Updater
     {
         UpdaterType = UpdaterType.Client;
     }
+
     public ClientUpdater(ICollection<Client> clients) : this()
     {
         var targetClientName = AnsiConsole.Prompt(
@@ -21,15 +22,15 @@ public class ClientUpdater : Updater
                 .AddChoices(clients.Select(b => b.Name)));
 
         Client = clients.First(b => b.Name == targetClientName);
-        
+
         while (true)
         {
             var targetField = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("What would you like to update?")
                     .AddChoices("Name", "UCN", "Room ID", "Back to Clients Menu"));
-            
-            if(targetField == "Back to Clients Menu") break;
+
+            if (targetField == "Back to Clients Menu") break;
 
             switch (targetField)
             {

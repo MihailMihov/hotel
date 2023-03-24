@@ -1,5 +1,4 @@
 using HotelConsole.Models;
-using HotelConsole.Views.Menus;
 using Spectre.Console;
 
 namespace HotelConsole.Views.Deleters;
@@ -7,10 +6,12 @@ namespace HotelConsole.Views.Deleters;
 public class BuildingDeleter : Deleter
 {
     public List<int> BuildingIds = new();
+
     public BuildingDeleter()
     {
         DeleterType = DeleterType.Building;
     }
+
     public BuildingDeleter(ICollection<Building> buildings) : this()
     {
         var targetBuildingNames = AnsiConsole.Prompt(
@@ -21,13 +22,9 @@ public class BuildingDeleter : Deleter
                 .AddChoices(buildings.Select(b => b.Name)));
 
         if (!AnsiConsole.Confirm($"Are you sure that you want to delete {targetBuildingNames.Count} buildings?"))
-        {
             return;
-        }
-        
+
         foreach (var buildingName in targetBuildingNames)
-        {
             BuildingIds.Add(buildings.First(b => b.Name == buildingName).Id);
-        }
     }
 }

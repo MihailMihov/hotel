@@ -11,6 +11,7 @@ public class ParkingUpdater : Updater
     {
         UpdaterType = UpdaterType.Parking;
     }
+
     public ParkingUpdater(ICollection<Parking> parkings) : this()
     {
         var targetParkingName = AnsiConsole.Prompt(
@@ -21,20 +22,21 @@ public class ParkingUpdater : Updater
                 .AddChoices(parkings.Select(b => b.Name)));
 
         Parking = parkings.First(b => b.Name == targetParkingName);
-        
+
         while (true)
         {
             var targetField = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("What would you like to update?")
                     .AddChoices("Name", "Capacity", "Back to Parkings Menu"));
-            
-            if(targetField == "Back to Parkings Menu") break;
+
+            if (targetField == "Back to Parkings Menu") break;
 
             switch (targetField)
             {
                 case "Name":
-                    Parking.Name = AnsiConsole.Ask<string>($"Enter [yellow]{Parking.Name}'s[/] new [darkorange]name[/]:");
+                    Parking.Name =
+                        AnsiConsole.Ask<string>($"Enter [yellow]{Parking.Name}'s[/] new [darkorange]name[/]:");
                     break;
                 case "Capacity":
                     Parking.Capacity =

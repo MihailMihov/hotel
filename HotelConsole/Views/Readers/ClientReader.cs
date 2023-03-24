@@ -9,6 +9,7 @@ public class ClientReader : Reader
     {
         ReaderType = ReaderType.Client;
     }
+
     public ClientReader(IEnumerable<Client> clients) : this()
     {
         var table = new Table();
@@ -19,9 +20,7 @@ public class ClientReader : Reader
         table.AddColumn("UCN");
         table.AddColumn("Room ID");
         foreach (var client in clients)
-        {
             table.AddRow(client.Id.ToString(), client.Name, client.Ucn, client.RoomId.ToString());
-        }
         AnsiConsole.Write(table);
         AnsiConsole.Write(new Rule("[yellow]Press any key to go back[/]"));
         Console.Read();
