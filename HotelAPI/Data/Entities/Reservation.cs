@@ -1,9 +1,9 @@
-﻿namespace HotelAPI.Models;
+﻿namespace HotelAPI.Data.Entities;
 
 public class Reservation
 {
     public int Id { get; set; }
-    
+
     public string ClientEmail { get; set; } = null!;
 
     public DateOnly StartDate { get; set; }

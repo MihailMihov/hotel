@@ -1,5 +1,5 @@
-using HotelAPI.Data;
-using HotelAPI.Models;
+using HotelAPI.Data.Context;
+using HotelAPI.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +21,7 @@ public class BuildingsController : ControllerBase
     public async Task<ActionResult<IEnumerable<Building>>> GetBuildings()
     {
         if (_context.Buildings == null) return NotFound();
-        return await _context.Buildings.ToListAsync();
+        return await _context.Buildings.Include(b => b.Rooms).ToListAsync();
     }
 
     // GET: api/Buildings/5

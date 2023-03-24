@@ -1,5 +1,5 @@
-using HotelAPI.Data;
-using HotelAPI.Models;
+using HotelAPI.Data.Context;
+using HotelAPI.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

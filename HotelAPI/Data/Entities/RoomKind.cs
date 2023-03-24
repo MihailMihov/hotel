@@ -1,4 +1,4 @@
-﻿namespace HotelAPI.Models;
+﻿namespace HotelAPI.Data.Entities;
 
 public class RoomKind
 {

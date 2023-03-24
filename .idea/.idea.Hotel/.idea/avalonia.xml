@@ -5,6 +5,12 @@
       <map>
         <entry key="Hotel/App.axaml" value="Hotel/Hotel.csproj" />
         <entry key="Hotel/Views/MainWindow.axaml" value="Hotel/Hotel.csproj" />
+        <entry key="HotelApp/App.axaml" value="HotelApp/HotelApp.csproj" />
+        <entry key="HotelApp/Icons.axaml" value="HotelApp/HotelApp.csproj" />
+        <entry key="HotelApp/Views/AddBuildingWindow.axaml" value="HotelApp/HotelApp.csproj" />
+        <entry key="HotelApp/Views/BuildingListView.axaml" value="HotelApp/HotelApp.csproj" />
+        <entry key="HotelApp/Views/BuildingListWindow.axaml" value="HotelApp/HotelApp.csproj" />
+        <entry key="HotelApp/Views/MainWindow.axaml" value="HotelApp/HotelApp.csproj" />
       </map>
     </option>
   </component>

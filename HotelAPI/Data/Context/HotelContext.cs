@@ -1,7 +1,7 @@
-﻿using HotelAPI.Models;
+﻿using HotelAPI.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace HotelAPI.Data;
+namespace HotelAPI.Data.Context;
 
 public partial class HotelContext : DbContext
 {

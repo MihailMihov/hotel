@@ -30,8 +30,7 @@
             <Button Content="Add building"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    Command="{Binding AddBuildingCommand}">
-            </Button>
+                    Command="{Binding AddBuildingCommand}" />
         </Panel>
     </Panel>
 </Window>

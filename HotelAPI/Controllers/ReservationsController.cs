@@ -1,5 +1,5 @@
-using HotelAPI.Data;
-using HotelAPI.Models;
+using HotelAPI.Data.Context;
+using HotelAPI.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,6 +65,7 @@ public class ReservationsController : ControllerBase
     public async Task<ActionResult<Reservation>> PostReservation(Reservation reservation)
     {
         if (_context.Reservations == null) return Problem("Entity set 'HotelContext.Reservations'  is null.");
+        reservation.Room = _context.Rooms.First(r => r.Id == reservation.RoomId);
         _context.Reservations.Add(reservation);
         await _context.SaveChangesAsync();
 
