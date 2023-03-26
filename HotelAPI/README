@@ -1,0 +1,6 @@
+In order to run the project on your local machine you need to set up the compose.debug.override.yml file.
+
+There is an example file ending in .example
+
+You also need to generate a valid HTTPS certificate and then trust it on your machine.
+The steps are explained at https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-7.0&tabs=visual-studio%2Clinux-ubuntu.
